@@ -1,0 +1,20 @@
+.cornerstone-element {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: black;
+    overflow: hidden;
+    touch-action: none;
+}
+
+.cornerstone-enabled-element .cornerstone-tool-active {
+    cursor: crosshair;
+}
+
+.cornerstone-enabled-element .cornerstone-tool-pan {
+    cursor: move;
+}
+
+.cornerstone-enabled-element .cornerstone-tool-zoom {
+    cursor: zoom-in;
+}
