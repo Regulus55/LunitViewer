@@ -2,22 +2,14 @@ import React from 'react'
 import InsightViewer, { useMultipleImages, useFrame } from '@lunit/insight-viewer'
 
 const IMAGES = [
-  "wadouri:https://static.lunit.io/fixtures/dcm-files/series/CT000000.dcm",
-  "wadouri:https://static.lunit.io/fixtures/dcm-files/series/CT000001.dcm",
-  "wadouri:https://static.lunit.io/fixtures/dcm-files/series/CT000002.dcm",
-  "wadouri:https://static.lunit.io/fixtures/dcm-files/series/CT000003.dcm",
-  "wadouri:https://static.lunit.io/fixtures/dcm-files/series/CT000004.dcm",
-  "wadouri:https://static.lunit.io/fixtures/dcm-files/series/CT000005.dcm",
-  "wadouri:https://static.lunit.io/fixtures/dcm-files/series/CT000006.dcm",
-  "wadouri:https://static.lunit.io/fixtures/dcm-files/series/CT000007.dcm",
-  "wadouri:https://static.lunit.io/fixtures/dcm-files/series/CT000008.dcm",
-  "wadouri:https://static.lunit.io/fixtures/dcm-files/series/CT000009.dcm",
-  "wadouri:https://static.lunit.io/fixtures/dcm-files/series/CT000010.dcm"
+  "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.734.1170.dcm",
+  "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.736.1171.dcm",
 ];
 
 const style = {
-  width: '500px',
-  height: '500px'
+  width: '80vw',
+  height: '500px',
+ 
 }
 
 export default function Viewer() {
@@ -54,3 +46,4 @@ export default function Viewer() {
     </div>
   )
 }
+
