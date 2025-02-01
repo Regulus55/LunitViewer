@@ -5,6 +5,7 @@ import { Container } from "reactstrap";
 import "flatpickr/dist/themes/material_blue.css";
 import Viewer from "./Viewer";
 import Viewers from "./Viewers";
+import Uploader from "./Uploader";
 
 const Contour = () => {
 
@@ -15,7 +16,8 @@ const Contour = () => {
     <React.Fragment>
       <div className="page-content">
         <Container fluid  className="d-flex flex-column align-items-center justify-content-center">
-         <Viewer/>
+         {/* <Viewer/> */}
+         <Uploader/>
 
         </Container>
       </div>
