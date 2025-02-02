@@ -1,0 +1,12 @@
+services:
+
+  beecouple_minio:
+    image: docker.io/bitnami/minio:2022
+    container_name: beecouple_minio
+    env_file:
+      - ./docker.env
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    platform: linux/amd64
+ 

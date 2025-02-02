@@ -3,9 +3,12 @@ import { Container } from "reactstrap";
 
 // FlatPickr
 import "flatpickr/dist/themes/material_blue.css";
-import Viewer from "./Viewer";
-import Viewers from "./Viewers";
+
 import Uploader from "./Uploader";
+import Annotation from "./Annotation";
+import ViewPort from "./ViewPort";
+import Multi from "./Multi";
+import Viewer from "./Viewer";
 
 const Contour = () => {
 
@@ -15,9 +18,13 @@ const Contour = () => {
   return (
     <React.Fragment>
       <div className="page-content">
-        <Container fluid  className="d-flex flex-column align-items-center justify-content-center">
-         {/* <Viewer/> */}
-         <Uploader/>
+        <Container fluid className="d-flex flex-column align-items-center justify-content-center">
+          {/* <Uploader/> */}
+          {/* <ViewPort/> */}
+          {/* <Multi/> */}
+          <Viewer/>
+
+          {/* <Annotation /> */}
 
         </Container>
       </div>
