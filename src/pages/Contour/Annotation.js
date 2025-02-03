@@ -73,31 +73,32 @@ const IMAGES = [
 export default function Annotation() {
     const [annotations, setAnnotations] = useState([]);
 
-
-    // 싱글
-    // const { loadingState, image } = useImage({
-    //     wadouri: IMAGES[0],
-    // });
-
-    // const { frame, setFrame } = useFrame({
-    //     initial: 0,
-    //     max: IMAGES.length - 1,
-    // })
-
     const handleAnnotationsChange = (annotations) => {
         setAnnotations(annotations);
     };
 
 
-    // 멀티
-    const { loadingState, images } = useMultipleImages({
-        wadouri: IMAGES
-    })
+
+    // 싱글    
+    const { loadingState, image } = useImage({
+        wadouri: IMAGES[0],
+    });
 
     const { frame, setFrame } = useFrame({
         initial: 0,
-        max: images.length - 1,
+        max: IMAGES.length - 1,
     })
+
+
+    // 멀티
+    // const { loadingState, images } = useMultipleImages({
+    //     wadouri: IMAGES
+    // })
+
+    // const { frame, setFrame } = useFrame({
+    //     initial: 0,
+    //     max: images.length - 1,
+    // })
 
     function changeFrame(e) {
         const { value } = e.target
@@ -108,15 +109,11 @@ export default function Annotation() {
     const [labelShow, setLabelShow] = useState(false)
     const [annotationMode, setAnnotationMode] = useState('polygon')
 
-    console.log('asdfasdfasdfasdf', images);
-
-
     const viewerRef = useRef(null)
 
-
     const { viewport, setViewport, resetViewport, initialized } = useViewport({
-        // image,
-        images,
+        image,
+        // images,
         viewerRef,
         options: { fitScale: false },
         getInitialViewport: (prevViewport) => ({
@@ -124,6 +121,19 @@ export default function Annotation() {
 
         }),
     })
+
+
+
+
+
+    useEffect(() => {
+        console.log('aaa', annotations)
+    }, [annotations])
+
+
+
+
+
 
     const updateViewport = useCallback(
         (key, value) => {
@@ -284,7 +294,7 @@ export default function Annotation() {
                         <input
                             type="checkbox"
                             className="form-check-input"
-                            id="customSwitchsizelg"
+                            id="customDrawing"
                             onChange={() => setIsDrawing(!isDrawing)}
                         />
                         <label
@@ -305,7 +315,7 @@ export default function Annotation() {
                         <input
                             type="checkbox"
                             className="form-check-input"
-                            id="customSwitchsizelg"
+                            id="customLabel"
                             onChange={() => setLabelShow(!labelShow)}
                         />
                         <label
@@ -364,25 +374,24 @@ export default function Annotation() {
                     value={frame}
                 />
                 <div style={{ width: '80vw', height: '500px' }}>
-                    {/* <InsightViewer
+                    <InsightViewer
                         viewerRef={viewerRef}
-                        // image={image}
-                        image={images[frame]}
-                        viewport={viewport}
+                        image={image}
+                        // image={images[frame]}
+                        // viewport={viewport}
                         onViewportChange={setViewport}
-                    > */}
-                    <InsightViewer image={images[frame]} >
-                        {/* <OverlayLayer viewport={viewport} /> */}
+                    >
+                        <OverlayLayer viewport={viewport} />
                         {loadingState === 'success' && (
-                        <AnnotationOverlay
-                            isDrawing={isDrawing}
-                            mode={annotationMode}
-                            annotations={annotations}
-                            // onChange={handleAnnotationsChange}
-                            showAnnotationLabel={labelShow}
-                        />
-                        )} 
-                   </InsightViewer>
+                            <AnnotationOverlay
+                                isDrawing={isDrawing}
+                                mode={annotationMode}
+                                annotations={annotations}
+                                onChange={handleAnnotationsChange}
+                                showAnnotationLabel={labelShow}
+                            />
+                        )}
+                    </InsightViewer>
                 </div>
             </div>
         </div>

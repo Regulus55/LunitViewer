@@ -22,7 +22,7 @@ const Contour = () => {
           {/* <Uploader/> */}
           {/* <ViewPort/> */}
           {/* <Multi/> */}
-          <Viewer/>
+          {/* <Viewer/> */}
 
           <Annotation />
 
