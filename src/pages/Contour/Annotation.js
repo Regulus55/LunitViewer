@@ -59,53 +59,48 @@ const annotationData = [
     },
 ]
 
+const IMAGES = [
+    "wadouri:http://localhost:9000/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.724.1165.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YWNH599TLSBE4OK0J0B1%2F20250203%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250203T123338Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiJZV05INTk5VExTQkU0T0swSjBCMSIsImV4cCI6MTczODYyNjQxOSwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.ectZUsYuK-YvvdPSh7FTPKBbzIhIoXOPAJ5DYEtJTsLmU2TouzOxgUZVzoW-4cA8dnZA815ccYdqQHbfpIX1Qg&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=e5ecbee27e84278fe03ed7c475a39589b9bf11fc3ae132fade4939b573ebf0cc",
+
+    "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.734.1170.dcm",
+    "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.724.1165.dcm",
+    "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.728.1168.dcm",
+    "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.731.1169.dcm",
+    "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.734.1170.dcm",
+    "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.736.1171.dcm",
+];
+
 export default function Annotation() {
     const [annotations, setAnnotations] = useState([]);
-    const IMAGES = [
-        "wadouri:http://localhost:9000/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.724.1165.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YWNH599TLSBE4OK0J0B1%2F20250203%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250203T123338Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiJZV05INTk5VExTQkU0T0swSjBCMSIsImV4cCI6MTczODYyNjQxOSwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.ectZUsYuK-YvvdPSh7FTPKBbzIhIoXOPAJ5DYEtJTsLmU2TouzOxgUZVzoW-4cA8dnZA815ccYdqQHbfpIX1Qg&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=e5ecbee27e84278fe03ed7c475a39589b9bf11fc3ae132fade4939b573ebf0cc",
-
-        "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.734.1170.dcm",
-        "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.724.1165.dcm",
-        "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.728.1168.dcm",
-        "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.731.1169.dcm",
-        "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.734.1170.dcm",
-        "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.736.1171.dcm",
 
 
+    // 싱글
+    // const { loadingState, image } = useImage({
+    //     wadouri: IMAGES[0],
+    // });
 
-
-
-        "wadouri:http://localhost:9000/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.947.1240.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=4UFKBM4KJLLC0CV501NV%2F20250202%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250202T013534Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiI0VUZLQk00S0pMTEMwQ1Y1MDFOViIsImV4cCI6MTczODUwMjg3MCwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.bke1pIreNyYS29i2Fg-Y-qiaHI4mzpQ6lj8wcCjAINelUVW0oZGfZhRggnBEMomYnkgCz7s__9ws_b2eeD848Q&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=25a54cd6e1d56969d19116d3adb187055c0bf1aeb7bd3580cfe63ba34a58cf04",
-        "wadouri:http://localhost:9001/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.724.1165.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=4UFKBM4KJLLC0CV501NV%2F20250202%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250202T013012Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiI0VUZLQk00S0pMTEMwQ1Y1MDFOViIsImV4cCI6MTczODUwMjg3MCwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.bke1pIreNyYS29i2Fg-Y-qiaHI4mzpQ6lj8wcCjAINelUVW0oZGfZhRggnBEMomYnkgCz7s__9ws_b2eeD848Q&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=504f9f534e77190f520b6924446c5a99a405dd4c4db93e6700ad782ce39cbff1",
-        "wadouri:http://localhost:9000/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.947.1240.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=4UFKBM4KJLLC0CV501NV%2F20250202%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250202T013534Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiI0VUZLQk00S0pMTEMwQ1Y1MDFOViIsImV4cCI6MTczODUwMjg3MCwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.bke1pIreNyYS29i2Fg-Y-qiaHI4mzpQ6lj8wcCjAINelUVW0oZGfZhRggnBEMomYnkgCz7s__9ws_b2eeD848Q&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=25a54cd6e1d56969d19116d3adb187055c0bf1aeb7bd3580cfe63ba34a58cf04",
-        "wadouri:http://localhost:9000/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.947.1240.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=4UFKBM4KJLLC0CV501NV%2F20250202%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250202T013534Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiI0VUZLQk00S0pMTEMwQ1Y1MDFOViIsImV4cCI6MTczODUwMjg3MCwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.bke1pIreNyYS29i2Fg-Y-qiaHI4mzpQ6lj8wcCjAINelUVW0oZGfZhRggnBEMomYnkgCz7s__9ws_b2eeD848Q&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=25a54cd6e1d56969d19116d3adb187055c0bf1aeb7bd3580cfe63ba34a58cf04",
-        "wadouri:http://localhost:9000/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.736.1171.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=4UFKBM4KJLLC0CV501NV%2F20250202%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250202T013725Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiI0VUZLQk00S0pMTEMwQ1Y1MDFOViIsImV4cCI6MTczODUwMjg3MCwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.bke1pIreNyYS29i2Fg-Y-qiaHI4mzpQ6lj8wcCjAINelUVW0oZGfZhRggnBEMomYnkgCz7s__9ws_b2eeD848Q&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=583b825fc55d639a1d8543d6c03ff0a53466e9305317df9a470353a2aac97c46",
-        "wadouri:http://localhost:9000/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.736.1171.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=4UFKBM4KJLLC0CV501NV%2F20250202%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250202T013725Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiI0VUZLQk00S0pMTEMwQ1Y1MDFOViIsImV4cCI6MTczODUwMjg3MCwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.bke1pIreNyYS29i2Fg-Y-qiaHI4mzpQ6lj8wcCjAINelUVW0oZGfZhRggnBEMomYnkgCz7s__9ws_b2eeD848Q&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=583b825fc55d639a1d8543d6c03ff0a53466e9305317df9a470353a2aac97c46",
-        "wadouri:http://localhost:9000/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.736.1171.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=4UFKBM4KJLLC0CV501NV%2F20250202%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250202T013725Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiI0VUZLQk00S0pMTEMwQ1Y1MDFOViIsImV4cCI6MTczODUwMjg3MCwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.bke1pIreNyYS29i2Fg-Y-qiaHI4mzpQ6lj8wcCjAINelUVW0oZGfZhRggnBEMomYnkgCz7s__9ws_b2eeD848Q&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=583b825fc55d639a1d8543d6c03ff0a53466e9305317df9a470353a2aac97c46",
-        "wadouri:http://localhost:9000/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.746.1175.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=4UFKBM4KJLLC0CV501NV%2F20250202%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250202T013800Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiI0VUZLQk00S0pMTEMwQ1Y1MDFOViIsImV4cCI6MTczODUwMjg3MCwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.bke1pIreNyYS29i2Fg-Y-qiaHI4mzpQ6lj8wcCjAINelUVW0oZGfZhRggnBEMomYnkgCz7s__9ws_b2eeD848Q&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=fe13f396e32fa73b1e9f58943c680d45b1518bfac2576545b1f3b9e4d5aa3d5d",
-
-        "wadouri:http://localhost:9000/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.752.1177.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=4UFKBM4KJLLC0CV501NV%2F20250202%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250202T050221Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiI0VUZLQk00S0pMTEMwQ1Y1MDFOViIsImV4cCI6MTczODUwMjg3MCwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.bke1pIreNyYS29i2Fg-Y-qiaHI4mzpQ6lj8wcCjAINelUVW0oZGfZhRggnBEMomYnkgCz7s__9ws_b2eeD848Q&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=5c604f2353ee55ff842fdd780d57fb2380c9a4b2ab6ddf341fd360cc5f2cf8c8",
-
-
-
-    ];
-
-    const { loadingState, image } = useImage({
-        wadouri: IMAGES[0],
-    });
-
-    const { frame, setFrame } = useFrame({
-        initial: 0,
-        max: IMAGES.length - 1,
-    })
+    // const { frame, setFrame } = useFrame({
+    //     initial: 0,
+    //     max: IMAGES.length - 1,
+    // })
 
     const handleAnnotationsChange = (annotations) => {
         setAnnotations(annotations);
     };
-    const changeFrame = (e) => {
-        const {
-            target: { value },
-        } = e
+
+
+    // 멀티
+    const { loadingState, images } = useMultipleImages({
+        wadouri: IMAGES
+    })
+
+    const { frame, setFrame } = useFrame({
+        initial: 0,
+        max: images.length - 1,
+    })
+
+    function changeFrame(e) {
+        const { value } = e.target
         setFrame(Number(value))
     }
 
@@ -113,13 +108,15 @@ export default function Annotation() {
     const [labelShow, setLabelShow] = useState(false)
     const [annotationMode, setAnnotationMode] = useState('polygon')
 
+    console.log('asdfasdfasdfasdf', images);
 
 
     const viewerRef = useRef(null)
 
 
     const { viewport, setViewport, resetViewport, initialized } = useViewport({
-        image,
+        // image,
+        images,
         viewerRef,
         options: { fitScale: false },
         getInitialViewport: (prevViewport) => ({
@@ -354,24 +351,39 @@ export default function Annotation() {
 
             </Row>
 
-            <div style={{ width: '90%', height: '500px' }}>
-                <InsightViewer
-                    viewerRef={viewerRef}
-                    image={image}
-                    viewport={viewport}
-                    onViewportChange={setViewport}
-                >
-                    <OverlayLayer viewport={viewport} />
-                    {loadingState === 'success' && (
+            <div>
+                <input
+                    type="range"
+                    id="frame"
+                    name="frame"
+                    min="0"
+                    max={IMAGES.length - 1}
+                    step="1"
+                    onChange={changeFrame}
+                    className="frame-control"
+                    value={frame}
+                />
+                <div style={{ width: '80vw', height: '500px' }}>
+                    {/* <InsightViewer
+                        viewerRef={viewerRef}
+                        // image={image}
+                        image={images[frame]}
+                        viewport={viewport}
+                        onViewportChange={setViewport}
+                    > */}
+                    <InsightViewer image={images[frame]} >
+                        {/* <OverlayLayer viewport={viewport} /> */}
+                        {loadingState === 'success' && (
                         <AnnotationOverlay
                             isDrawing={isDrawing}
                             mode={annotationMode}
                             annotations={annotations}
-                            onChange={handleAnnotationsChange}
+                            // onChange={handleAnnotationsChange}
                             showAnnotationLabel={labelShow}
                         />
-                    )}
-                </InsightViewer>
+                        )} 
+                   </InsightViewer>
+                </div>
             </div>
         </div>
     );
