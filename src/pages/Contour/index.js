@@ -24,7 +24,7 @@ const Contour = () => {
           {/* <Multi/> */}
           <Viewer/>
 
-          {/* <Annotation /> */}
+          <Annotation />
 
         </Container>
       </div>
