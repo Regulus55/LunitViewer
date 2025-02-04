@@ -13,14 +13,14 @@ import InsightViewer, { useMultipleImages, useFrame } from '@lunit/insight-viewe
 
 // ];
 const IMAGES = [
-  "wadouri:http://localhost:9000/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.724.1165.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YWNH599TLSBE4OK0J0B1%2F20250203%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250203T123338Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiJZV05INTk5VExTQkU0T0swSjBCMSIsImV4cCI6MTczODYyNjQxOSwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.ectZUsYuK-YvvdPSh7FTPKBbzIhIoXOPAJ5DYEtJTsLmU2TouzOxgUZVzoW-4cA8dnZA815ccYdqQHbfpIX1Qg&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=e5ecbee27e84278fe03ed7c475a39589b9bf11fc3ae132fade4939b573ebf0cc",
-
   "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.734.1170.dcm",
   "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.724.1165.dcm",
   "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.728.1168.dcm",
   "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.731.1169.dcm",
   "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.734.1170.dcm",
   "wadouri:/images/2.16.840.1.114362.1.11890052.23347336132.553945887.736.1171.dcm",
+  
+  "wadouri:http://localhost:9000/beecouple/2.16.840.1.114362.1.11890052.23347336132.553945887.724.1165.dcm?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YWNH599TLSBE4OK0J0B1%2F20250203%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250203T123338Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiJZV05INTk5VExTQkU0T0swSjBCMSIsImV4cCI6MTczODYyNjQxOSwicGFyZW50IjoiYmVlY291cGxlX3VzZXIifQ.ectZUsYuK-YvvdPSh7FTPKBbzIhIoXOPAJ5DYEtJTsLmU2TouzOxgUZVzoW-4cA8dnZA815ccYdqQHbfpIX1Qg&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=e5ecbee27e84278fe03ed7c475a39589b9bf11fc3ae132fade4939b573ebf0cc",
 ];
 
 const style = {

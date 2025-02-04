@@ -21,7 +21,6 @@ const Contour = () => {
         <Container fluid className="d-flex flex-column align-items-center justify-content-center">
           {/* <Uploader/> */}
           {/* <ViewPort/> */}
-          {/* <Multi/> */}
           {/* <Viewer/> */}
 
           <Annotation />
