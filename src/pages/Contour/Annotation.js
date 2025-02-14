@@ -87,10 +87,10 @@ export default function Annotation() {
 
 
 
-    
+
     const [dcmFiles, setDcmFiles] = useState([]);
 
-  const [parseError, setParseError] = useState("");
+    const [parseError, setParseError] = useState("");
     const [sopInstanceUid, setSopInstanceUid] = useState("");
     const [patientId, setPatientId] = useState("");
     const [patientName, setPatientName] = useState("");
@@ -101,23 +101,23 @@ export default function Annotation() {
 
     const onDrop = useCallback(acceptedFiles => {
         console.log('Dropped files:', acceptedFiles); // 드래그한 파일 확인
-    
+
         // acceptedFiles 배열에서 각 파일의 경로를 "wadouri:" 접두사를 붙여 새로운 배열로 생성
         const updatedImages = acceptedFiles.map(file => {
             return `wadouri:/images/${file.name}`;  // 파일 이름을 기반으로 경로 생성
         });
-    
+
         setDcmFiles(updatedImages);  // IMAGES 상태에 새로운 파일 경로 배열 설정
-    
+
         clearPage();
         loadFile(acceptedFiles);  // 필요시 파일 읽기
     }, []);
-    
 
 
-useEffect(()=>{
-    console.log('dasdfasdf',dcmFiles)
-},[dcmFiles])
+
+    useEffect(() => {
+        console.log('dasdfasdf', dcmFiles)
+    }, [dcmFiles])
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -132,44 +132,44 @@ useEffect(()=>{
         setPatientWeight('');
     }
 
-     function parseByteArray(byteArray) {
-            try {
-                const dataSet = dicomParser.parseDicom(byteArray);
-    
-                // 정보 파싱
-                const sopInstanceUid = dataSet.string('x0020000d');
-                setSopInstanceUid(sopInstanceUid);
-    
-                const patientId = dataSet.string('x00100020');
-                if (patientId !== undefined) {
-                    setPatientId(patientId);
-                } else {
-                    alert("Patient ID element has no data");
-                }
-    
-                const patientName = dataSet.string('x00100010');
-                if (patientName !== undefined) {
-                    setPatientName(patientName);
-                } else {
-                    alert("Patient Name element has no data");
-                }
-    
-                const patientSex = dataSet.string('x00100040');
-                setPatientSex(patientSex || "N/A");
-    
-                const patientBirthDate = dataSet.string('x00100030');
-                setPatientBirthDate(patientBirthDate || "N/A");
-    
-                const patientAge = dataSet.string('x00101010');
-                setPatientAge(patientAge || "N/A");
-    
-                const patientWeight = dataSet.string('x00101030');
-                setPatientWeight(patientWeight || "N/A");
-    
-            } catch (err) {
-                setParseError(err.message);
+    function parseByteArray(byteArray) {
+        try {
+            const dataSet = dicomParser.parseDicom(byteArray);
+
+            // 정보 파싱
+            const sopInstanceUid = dataSet.string('x0020000d');
+            setSopInstanceUid(sopInstanceUid);
+
+            const patientId = dataSet.string('x00100020');
+            if (patientId !== undefined) {
+                setPatientId(patientId);
+            } else {
+                alert("Patient ID element has no data");
             }
+
+            const patientName = dataSet.string('x00100010');
+            if (patientName !== undefined) {
+                setPatientName(patientName);
+            } else {
+                alert("Patient Name element has no data");
+            }
+
+            const patientSex = dataSet.string('x00100040');
+            setPatientSex(patientSex || "N/A");
+
+            const patientBirthDate = dataSet.string('x00100030');
+            setPatientBirthDate(patientBirthDate || "N/A");
+
+            const patientAge = dataSet.string('x00101010');
+            setPatientAge(patientAge || "N/A");
+
+            const patientWeight = dataSet.string('x00101030');
+            setPatientWeight(patientWeight || "N/A");
+
+        } catch (err) {
+            setParseError(err.message);
         }
+    }
 
     function loadFile(acceptedFiles) {
         const file = acceptedFiles[0];
@@ -445,10 +445,24 @@ useEffect(()=>{
                         </Col>
                     </>
                 ))}
-
             </Row>
 
             <div>
+                {/* dcm 파일 드래그 하는곳 */}
+                <div id="dropZone" className="w-100 mb-3" >
+                    <div className=" rounded p-4 text-center" style={{ borderStyle: "dashed" }}>
+                        <div {...getRootProps()} className="w-100 h-100 d-flex align-items-center justify-content-center">
+                            <input key="dropzone-input" {...getInputProps()} />
+                            {isDragActive ? (
+                                <p className="text-muted">Drop the files here ...</p>
+                            ) : (
+                                <p className="text-muted">Drag and drop some files here, or click to select files</p>
+                            )}
+                        </div>
+                    </div>
+                </div>
+
+                {/* 드래그한 파일 보여주는곳 */}
                 <input
                     type="range"
                     id="frame"
@@ -479,17 +493,6 @@ useEffect(()=>{
                     </InsightViewer>
                 </div>
             </div>
-            {/* <DicomHeader/> */}
-            <div id="dropZone">
-                        <div {...getRootProps()}>
-                            <input key="dropzone-input" {...getInputProps()} />
-                            {isDragActive ? (
-                                <p>Drop the files here ...</p>
-                            ) : (
-                                <p>Drag and drop some files here, or click to select files</p>
-                            )}
-                        </div>
-                    </div>
         </div>
     );
 }
@@ -502,4 +505,3 @@ useEffect(()=>{
 // onAdd, onHover, onRemove, onSelect, onChange,
 
 // }: AnnotationOverlayProps) => React.JSX.Element | null;
-
